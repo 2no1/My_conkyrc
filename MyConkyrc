@@ -11,7 +11,7 @@ own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 minimum_size 250 5
-maximum_width 400
+maximum_width 200
 draw_shades no
 draw_outline no
 draw_borders no
@@ -30,49 +30,49 @@ override_utf8_locale no
 use_spacer right
 
 TEXT
-${offset 240}${color slate grey}UpTime: $alignr ${color }$uptime $alignr
-${offset 240}${color slate grey}Frequency: $alignr ${color } ${freq_g cpu0}Ghz $alignr
-${offset 240}${color slate grey}CPU:${color } $cpu% $alignr${exec /opt/vc/bin/vcgencmd measure_temp | cut -c6-9}C$alignr
-${offset 240}${color lightgrey}${cpugraph}
-${offset 240}$font${color lightgrey}CPU1  ${cpu cpu1}% ${cpubar cpu1}
-${offset 240}CPU2  ${cpu cpu2}% ${cpubar cpu2}
-${offset 240}CPU3  ${cpu cpu3}% ${cpubar cpu3}
-${offset 240}CPU4  ${cpu cpu4}% ${cpubar cpu4}
+${color slate grey}UpTime: $alignr ${color }$uptime $alignr
+${color slate grey}Frequency: $alignr ${color } ${freq_g cpu0}Ghz $alignr
+ ${color slate grey}CPU:${color } $cpu% $alignr${exec /opt/vc/bin/vcgencmd measure_temp | cut -c6-9}C$alignr
+${color lightgrey}${cpugraph}
+ $font${color lightgrey}CPU1  ${cpu cpu1}% ${cpubar cpu1}
+ CPU2  ${cpu cpu2}% ${cpubar cpu2}
+ CPU3  ${cpu cpu3}% ${cpubar cpu3}
+ CPU4  ${cpu cpu4}% ${cpubar cpu4}
 $alignr
-${offset 240}${color slate grey}RAM:$alignr${color }      $memperc% $mem/$memmax$alignr
-${offset 240}${color lightgrey}${membar}$alignr
-${offset 240}${color slate grey}SWAP:      ${color }$alignr$swapperc% $swap/$swapmax$alignr
-${offset 240}${color lightgrey}${swapbar}$alignr
-${offset 240}${color slate grey}TOP PROCESSES:$alignr
-${offset 240}${color lightgrey}$font${top_mem name 2}${alignr}${top mem 2} %$alignr
-${offset 240}$font${top_mem name 3}${alignr}${top mem 3} %$alignr
-${offset 240}$font${top_mem name 4}${alignr}${top mem 4} %$alignr
-${offset 240}$font${top_mem name 5}${alignr}${top mem 5} %$alignr
+ ${color slate grey}RAM:$alignr${color }      $memperc% $mem/$memmax$alignr
+ ${color lightgrey}${membar}$alignr
+ ${color slate grey}SWAP:      ${color }$alignr$swapperc% $swap/$swapmax$alignr
+ ${color lightgrey}${swapbar}$alignr
+ ${color slate grey}TOP PROCESSES:$alignr
+ ${color lightgrey}$font${top_mem name 2}${alignr}${top mem 2} %$alignr
+ $font${top_mem name 3}${alignr}${top mem 3} %$alignr
+ $font${top_mem name 4}${alignr}${top mem 4} %$alignr
+ $font${top_mem name 5}${alignr}${top mem 5} %$alignr
 $alignr
-${offset 240}${color slate grey}Disk Space  $alignr${color }${fs_free /}/${fs_size /home}$alignr
-${offset 240}${color lightgrey}${fs_bar /home}
+ ${color slate grey}Disk Space  $alignr${color }${fs_free /}/${fs_size /home}$alignr
+ ${color lightgrey}${fs_bar /home}
 $alignr
-${offset 240}${color slate grey}NETWORK: $alignr
+ ${color slate grey}NETWORK: $alignr
 ${if_existing /sys/class/net/eth0/operstate up}
-${offset 240}${color}Ip on eth0: $alignr ${addr eth0}
-${offset 240}${color}Up: ${color }$alignr${upspeed eth0}$alignr
-${offset 240}${upspeedgraph eth0 ffffff}
-${offset 240}${color}Down: $alignr ${color} $alignr ${downspeed eth0}${color}$alignr
-${offset 240}${downspeedgraph eth0 ffffff}
+ ${color}Ip on eth0: $alignr ${addr eth0}
+ ${color}Up: ${color }$alignr${upspeed eth0}$alignr
+ ${upspeedgraph eth0 ffffff}
+ ${color}Down: $alignr ${color} $alignr ${downspeed eth0}${color}$alignr
+ ${downspeedgraph eth0 ffffff}
 ${else}
 ${if_existing /sys/class/net/wlan0/operstate up}
-${offset 240}${color}Ip on wlan0: $alignr ${addr wlan0}
-${offset 240}${color}Up: ${color }$alignr${upspeed wlan0}$alignr
-${offset 240}${upspeedgraph wlan0 ffffff}
-${offset 240}${color}Down: $alignr ${color} $alignr ${downspeed wlan0}${color}$alignr
-${offset 240}${downspeedgraph wlan0 ffffff}
+ ${color}Ip on wlan0: $alignr ${addr wlan0}
+ ${color}Up: ${color }$alignr${upspeed wlan0}$alignr
+ ${upspeedgraph wlan0 ffffff}
+ ${color}Down: $alignr ${color} $alignr ${downspeed wlan0}${color}$alignr
+ ${downspeedgraph wlan0 ffffff}
 ${else}
 ${if_existing /sys/class/net/wlan1/operstate up}
-${offset 240}${color}Ip on wlan1: $alignr ${addr wlan1}
-${offset 240}${color}Up: ${color }$alignr${upspeed wlan1}$alignr
-${offset 240}${upspeedgraph wlan1 ffffff}
-${offset 240}${color}Down: $alignr ${color} $alignr ${downspeed wlan1}${color}$alignr
-${offset 240}${downspeedgraph wlan1 ffffff}
+ ${color}Ip on wlan1: $alignr ${addr wlan1}
+ ${color}Up: ${color }$alignr${upspeed wlan1}$alignr
+ ${upspeedgraph wlan1 ffffff}
+ ${color}Down: $alignr ${color} $alignr ${downspeed wlan1}${color}$alignr
+ ${downspeedgraph wlan1 ffffff}
 ${else}
-${offset 240}${color}No network $alignr
+ ${color}No network $alignr
 ${endif}
