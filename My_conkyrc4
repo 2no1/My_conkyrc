@@ -1,0 +1,61 @@
+background yes
+use_xft yes
+xftfont Samanta:size=9
+xftalpha 0.7
+update_interval 1
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_argb_visual yes
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 250 5
+maximum_width 250
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color lightgrey
+default_shade_color red
+default_outline_color green
+alignment top_right
+gap_x 5
+gap_y 5
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale no
+use_spacer right
+format_human_readable yes
+short_units yes
+
+TEXT
+${color #ee3608}CPU:${color }$cpu% $alignr ${color #ee3608}${color #ee3608}MEM:${color}$memperc%
+${color #ee3608}SWAP:${color}$swapperc%
+${color #ee3608}${cpugraph}
+$font${color}CPU0  ${cpu cpu0}%${color #ee3608}${goto 77}${cpubar cpu0}
+${color}CPU1  ${cpu cpu1}%${color #ee3608}${goto 77}${cpubar cpu1}
+${color}CPU2  ${cpu cpu2}%${color #ee3608}${goto 77}${cpubar cpu2}
+${color}CPU3  ${cpu cpu3}%${color #ee3608}${goto 77}${cpubar cpu3}
+
+${color #ee3608}PROCESS:${goto 145}CPU:${goto 220}MEM:${color}
+${top name 1}${goto 135}${top cpu 1}%${goto 220}${top mem_res 1}
+${top name 2}${goto 135}${top cpu 2}%${goto 220}${top mem_res 2}
+${top name 3}${goto 135}${top cpu 3}%${goto 220}${top mem_res 3}
+${top name 4}${goto 135}${top cpu 4}%${goto 220}${top mem_res 4}
+${top name 5}${goto 135}${top cpu 5}%${goto 220}${top mem_res 5}
+
+${color #ee3608}ROOT: ${color}${goto 53}${fs_free /}/${fs_size /} \
+${goto 135}${color #ee3608}${fs_bar /} 
+${color #ee3608}HOME: ${color}${goto 53}${fs_free /home}/${fs_size /home} \
+${goto 135}${color #ee3608}${fs_bar /home}
+
+${color}Public IP:$alignr${exec curl -s www.icanhazip.com}${if_existing /sys/class/net/enp3s0/operstate up}
+${color}IP on enp3s0: $alignr ${addr enp3s0}
+${color}Up: ${color }$alignr${upspeed enp3s0}$alignr
+${color #ee3608}${upspeedgraph enp3s0}
+${color}Down: $alignr ${color} $alignr ${downspeed enp3s0}${color}$alignr
+${color #ee3608}${downspeedgraph enp3s0}
+${endif}
